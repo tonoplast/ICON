@@ -30,9 +30,9 @@ for (i in 1:repeats) {
   ### BET SETTINGS ########
   side_bet_on <- 0 #1: side_one_icx, 2: side_both_icx, 3: side_same_digit
   
-  icx_amount <- 500
-  icx_bet <- 100
-  side_bet <- 1
+  icx_amount <- 100
+  icx_bet <- 10
+  side_bet <- 0.1
   network_fee <- 0.004
   
   
@@ -113,8 +113,6 @@ repeat {
   print(icx_amount)
   counter = counter + 1
   
-  
-  
   if (icx_amount < icx_bet) {
     print(paste("Rolled", counter, "times"))
     print(paste("Total ICX wagered is", total_icx_bet))
@@ -126,8 +124,11 @@ repeat {
 counter_list[i] <- counter
 icx_wagered_list[i] <- total_icx_bet
 
+# barplot(sum(unlist(icx_wagered_list)), ylim = c(0,10), horiz = TRUE)
 
 # boxplot(unlist(counter_list))
+
+hist(unlist(icx_wagered_list))
 
 } ## loop
 
@@ -138,8 +139,10 @@ icx_wagered_list <- unlist(icx_wagered_list)
 summary(counter_unlist)
 summary(icx_wagered_list)
 
-plot(icx_wagered_list)
-# boxplot(counter_unlist)
+# plot(icx_wagered_list)
+# boxplot(icx_wagered_list)
+
+# hist(icx_wagered_list)
 
 
 # side:
